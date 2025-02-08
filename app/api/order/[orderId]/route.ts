@@ -1,0 +1,32 @@
+import Customer from "@/lib/models/Customer";
+import Order from "@/lib/models/Order";
+import Product from "@/lib/models/Product";
+import { connectToDB } from "@/lib/MongoDB";
+import { NextRequest, NextResponse } from "next/server";
+
+export const GET = async (
+  req: NextRequest,
+  { params }: { params: { orderId: string } }
+) => {
+  try {
+    await connectToDB();
+    const orderDetails = await Order.findById(params.orderId).populate({
+      path: "products.product",
+      model: Product,
+    });
+
+    if (!orderDetails) {
+      return new NextResponse(JSON.stringify({ message: "Order not found" }), {
+        status: 404,
+      });
+    }
+    const customer = await Customer.findOne({
+      clerkId: orderDetails.customerClerkId,
+    });
+
+    return NextResponse.json({ orderDetails, customer }, { status: 200 });
+  } catch (err) {
+    console.log("[orderId_GET]", err);
+    return new NextResponse("Internal error", { status: 500 });
+  }
+};
