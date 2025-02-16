@@ -5,7 +5,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { UserButton } from '@clerk/nextjs'
 import { useState } from 'react'
-import { Client } from '@clerk/nextjs/server'
 import { usePathname } from 'next/navigation';
 import { Menu } from 'lucide-react'
 

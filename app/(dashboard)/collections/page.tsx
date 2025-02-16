@@ -1,17 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { get } from "http";
-import { DataTable } from "@/components/custom/data-table";
+ 
+ import { DataTable } from "@/components/custom/data-table";
 import { columns } from "@/components/collection/CollectionColumns";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";

@@ -3,25 +3,22 @@
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
-import { toast } from "react-hot-toast";
+ import { toast } from "react-hot-toast";
 import { Separator } from "../ui/separator";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
   Form,
   FormControl,
-  FormDescription,
-  FormField,
+   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Textarea } from "../ui/textarea";
 import ImageUpload from "../custom/ImageUpload";
-import { useParams, useRouter } from "next/navigation";
-import { set } from "mongoose";
-import Delete from "../custom/delete";
+import {  useRouter } from "next/navigation";
+ import Delete from "../custom/delete";
 
 interface CollectionFormProps {
   initialData?: CollectionType | null;
@@ -29,8 +26,7 @@ interface CollectionFormProps {
 
 const CollectionFrom: React.FC<CollectionFormProps> = ({ initialData }) => {
   const router = useRouter();
-   const [loading, setLoading] = useState(false);
-
+ 
   const formSchema = z.object({
     title: z.string().min(2).max(20),
     description: z.string().min(2).max(500).trim(),
@@ -56,8 +52,7 @@ const CollectionFrom: React.FC<CollectionFormProps> = ({ initialData }) => {
   }
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      setLoading(true);
-      console.log(values);
+       console.log(values);
       const url = initialData
         ? `/api/collections/${initialData._id}`
         : "/api/collections";
@@ -69,8 +64,7 @@ const CollectionFrom: React.FC<CollectionFormProps> = ({ initialData }) => {
         body: JSON.stringify(values),
       });
       if (res.ok) {
-        setLoading(false);
-        toast.success(
+         toast.success(
           `Collection ${initialData ? "Updated" : "Created"} Successfully`
         );
         window.location.href = "/collections";

@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+/*{import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";  
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
@@ -57,4 +57,4 @@ export async function POST(req: NextRequest) {
     console.log("[checkout_POST]", err);
     return new NextResponse("Internal Server Error", { status: 500 });
   }
-}
+}}*/

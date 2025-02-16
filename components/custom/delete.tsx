@@ -1,5 +1,5 @@
 "use client"
-import React, { ReactInstance, useState } from 'react'
+import React, {  useState } from 'react'
 import { Button } from '../ui/button'
 import { Trash } from 'lucide-react'
 import {
@@ -25,15 +25,14 @@ const Delete:React.FC<DeleteProps> = ({item, id }) => {
   const [loading,setloading] = useState(true)
 
   const onDelete = async () =>{
-
+loading && console.log("loading")
     try {
       setloading(true)
       const itemType = item === "product" ? "products" : "collections"
       const res = await fetch(`/api/${itemType}/${id}`,{
         method: "DELETE",
       }) 
-
-      if (res.ok) {
+       if (res.ok) {
         setloading(false)
         toast.success(`${item} Deleted Successfully`)
         window.location.href = (`/${itemType}`)

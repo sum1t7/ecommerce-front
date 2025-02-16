@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
         allowed_countries: ["IN"],
       },
       shipping_options: [{ shipping_rate: "shr_1QekWvJaHEOogjatJhT3KfJ1" }],
-      line_items: cartItems.map((item: any) => ({
+      line_items: cartItems.map((item: { item: { title: string; _id: string; price: number }; size?: string; color?: string; quantity: number }) => ({
         price_data: {
           currency: "inr",
           product_data: {
@@ -54,6 +54,7 @@ export async function POST(req: NextRequest) {
   }
 }
 export const dynamic = "force-dynamic";
+
 {
   /*
 export async function POST(req: NextRequest) {

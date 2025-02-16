@@ -1,7 +1,6 @@
 import { DataTable } from "@/components/custom/data-table"
 import { columns } from "@/components/orderItems/OrderItemColumns"
-import { useState } from "react"
-
+ 
  
 const OrderDetails = async ({params}:{params:{orderId:string}}) => {
     const res = await fetch(`http://localhost:3000/api/order/${params.orderId}`)

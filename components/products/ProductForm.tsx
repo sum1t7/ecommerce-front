@@ -11,15 +11,14 @@ import { Input } from "@/components/ui/input";
 import {
   Form,
   FormControl,
-  FormDescription,
-  FormField,
+   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Textarea } from "../ui/textarea";
 import ImageUpload from "../custom/ImageUpload";
-import { useParams, useRouter } from "next/navigation";
+import {  useRouter } from "next/navigation";
  import Delete from "../custom/delete";
 import MultiText from "../custom/MultiText";
 import MultiSelect from "../custom/MultiSelect";

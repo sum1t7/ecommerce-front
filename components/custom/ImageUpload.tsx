@@ -3,8 +3,7 @@ import { CldUploadWidget } from "next-cloudinary";
 import { Button } from "../ui/button";
 import { Plus, Trash } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
-
+ 
 interface ImageUploadProps {
   value: string[] ;
   onChange: (value: string) => void;
@@ -22,10 +21,21 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
   
   const images: string[] = value;
   
+  interface UploadResult {
+    info: {
+      secure_url: string;
+    };
+  }
+
   const onSucces = (result: any) => {
-    onChange(result.info.secure_url);
-    images.push(result.info.secure_url);
-    console.log(value);
+    const secureUrl = result.info?.secure_url;
+    if (secureUrl) {
+      onChange(secureUrl);
+      images.push(secureUrl);
+      console.log(value);
+    } else {
+      console.error("Upload failed: secure_url not found");
+    }
   };
 
   return (

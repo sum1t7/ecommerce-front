@@ -1,11 +1,8 @@
 import { Separator } from "@/components/ui/separator";
 import { getSalesPerMonth, getTotalCustomer, getTotalSales } from "@/lib/actions/action";
-import { UserButton } from "@clerk/nextjs";
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";

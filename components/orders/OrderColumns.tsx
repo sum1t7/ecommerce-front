@@ -1,6 +1,5 @@
 "use client";
 import { ColumnDef } from "@tanstack/react-table";
-import Delete from "../custom/delete";
 import Link from "next/link";
 
 export const columns: ColumnDef<OrderColumnType>[] = [

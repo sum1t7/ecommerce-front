@@ -3,10 +3,7 @@ import "../globals.css";
 import Leftsidebar from "../../components/layout/leftsidebar";
 import {
   ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton
+  
 } from '@clerk/nextjs'
 import Topbar from "../../components/layout/Topbar";
  import { ToasterProvider } from "@/lib/ToasterProvider";

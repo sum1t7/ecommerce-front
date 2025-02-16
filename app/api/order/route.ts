@@ -3,7 +3,7 @@ import Order from "@/lib/models/Order";
 import { connectToDB } from "@/lib/MongoDB";
  import { NextRequest, NextResponse } from "next/server";
 import { format } from "date-fns"
-export  const GET = async (req: NextRequest) => {
+export  const GET = async () => {
     try{
         await connectToDB()
         const orders = (await Order.find().sort({createdAt: "desc"}))
