@@ -10,7 +10,9 @@ interface ImageUploadProps {
   onRemove: (value: string) => void;
 }
 
+import { CloudinaryUploadWidgetResults } from "next-cloudinary";
 
+interface UploadResult extends CloudinaryUploadWidgetResults {}
 
 const ImageUpload: React.FC<ImageUploadProps> = ({
   onChange,
@@ -19,11 +21,18 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
 }) => {
   
   
-  const images: string[] = value;
+const images: string[] = value;
   
   
-  const onSucces = (result: any) => {
-    const secureUrl = result.info?.secure_url;
+
+
+  const onSucces = (result: UploadResult) => {
+    let secureUrl: string | undefined;
+    if (typeof result.info === "string") {
+      secureUrl = result.info;
+    } else {
+      secureUrl = result.info?.secure_url;
+    }
     if (secureUrl) {
       onChange(secureUrl);
       images.push(secureUrl);
