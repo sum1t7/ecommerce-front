@@ -21,12 +21,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
   
   const images: string[] = value;
   
-  interface UploadResult {
-    info: {
-      secure_url: string;
-    };
-  }
-
+  
   const onSucces = (result: any) => {
     const secureUrl = result.info?.secure_url;
     if (secureUrl) {
