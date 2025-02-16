@@ -1,9 +1,5 @@
  import { NextRequest, NextResponse } from "next/server";
-import Stripe from "stripe";
-
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
-    apiVersion: '2024-12-18.acacia',
-});
+ import { stripe } from "@/lib/Stripe";
  
 const corsHeaders = {
     "Access-Control-Allow-Origin": "*",
@@ -19,6 +15,7 @@ export async function OPTIONS() {
 export async function POST(req: NextRequest) {
   try {
     const { cartItems, customer } = await req.json();
+    
     if (!cartItems || !customer) {
       return new NextResponse("invalid request", { status: 400 });
     }
@@ -56,7 +53,7 @@ export async function POST(req: NextRequest) {
     return new NextResponse("internal server error", { status: 500 });
   }
 }
-
+export const dynamic = "force-dynamic";
 {
   /*
 export async function POST(req: NextRequest) {

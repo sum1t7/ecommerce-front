@@ -21,3 +21,5 @@ catch(err){
     return new NextResponse("Internal Server error",{status:500});
 }
 }
+
+export const dynamic = "force-dynamic";
